@@ -19,6 +19,7 @@ gem 'bootsnap',                   '1.7.2', require: false
 gem 'rexml', '~> 3.2', '>= 3.2.4'
 gem 'slim-rails'
 gem 'rails_admin', '~> 2.0'
+gem 'rubocop', '~> 1.22', require: false
 
 group :development, :test do
   gem 'sqlite3', '1.4.2'
