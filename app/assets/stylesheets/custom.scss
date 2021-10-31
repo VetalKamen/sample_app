@@ -327,4 +327,15 @@ span.image {
     border: 0;
   }
 }
+#canvas-confetti{
+  width: 60px;
+  height: 35px;
+  margin: 7px auto auto;
+  background-color: darkorange;
+}
+canvas#confetti{
+  position:absolute;
+  top:0;
+  pointer-events: none;
+}
 
