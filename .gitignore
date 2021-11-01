@@ -42,3 +42,4 @@ yarn-debug.log*
 # Ignore db test files.
 db/test.*
 sample_app_test*
+.idea/
