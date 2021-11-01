@@ -66,10 +66,3 @@ jobs:
         with:
           name: code-coverage
           path: coverage/
-      - name: Formatting and Security Checks
-        run: |
-         bundle exec rubocop
-         bundle exec brakeman -z
-         gem install bundle-audit
-         bundle-audit update
-         bundle-audit
