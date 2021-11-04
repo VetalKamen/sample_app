@@ -20,10 +20,13 @@ gem 'rexml', '~> 3.2', '>= 3.2.4'
 gem 'slim-rails'
 gem 'rails_admin', '~> 2.0'
 gem 'rubocop', '~> 1.22', require: false
+gem 'rails-observers'
 
 group :development, :test do
   gem 'sqlite3', '1.4.2'
   gem 'byebug',  '11.1.3', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'rspec-rails'
+  gem 'factory_bot_rails'
 end
 
 group :development do

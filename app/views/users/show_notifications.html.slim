@@ -1,0 +1,14 @@
+- provide(:title, @title)
+.row
+  aside.col-md-4
+    section.user_info
+      h1= @user.name
+      span= link_to "view my profile", @user
+    section.stats
+      = render 'shared/stats'
+  .col-md-8
+    h3= @title
+    - if @notifications.any?
+      ol.microposts
+        = render @notifications
+      = will_paginate @notifications
