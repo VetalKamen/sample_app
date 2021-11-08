@@ -17,10 +17,11 @@ gem 'turbolinks',                 '5.2.1'
 gem 'jbuilder',                   '2.10.0'
 gem 'bootsnap',                   '1.7.2', require: false
 gem 'rexml', '~> 3.2', '>= 3.2.4'
-gem 'slim-rails'
+gem 'slim-rails', github: 'slim-template/slim-rails'
 gem 'rails_admin', '~> 2.0'
 gem 'rubocop', '~> 1.22', require: false
 gem 'rails-observers'
+gem 'ckeditor'
 
 group :development, :test do
   gem 'sqlite3', '1.4.2'
