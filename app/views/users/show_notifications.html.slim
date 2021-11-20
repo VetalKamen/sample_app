@@ -9,6 +9,6 @@
   .col-md-8
     h3= @title
     - if @notifications.any?
-      ol.microposts
+      ol.notifications
         = render @notifications
       = will_paginate @notifications

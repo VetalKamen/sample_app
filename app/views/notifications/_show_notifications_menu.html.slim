@@ -1,0 +1,5 @@
+.row.navbar-notifications
+  - if @notifications.any?
+    ol.notifications
+      = render @notifications
+    = will_paginate @notifications_paginated

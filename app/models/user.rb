@@ -6,7 +6,7 @@ class User < ApplicationRecord
   has_many :passive_relationships, class_name: 'Relationship',
                                    foreign_key: 'followed_id',
                                    dependent: :destroy
-  has_many :following, through: :active_relationships, source: :followed
+  has_many :following, through: :active_relationships, source: :followed, after_remove: :delete_notification
   has_many :followers, through: :passive_relationships, source: :follower
   has_many :notifications, dependent: :destroy
   attr_accessor :remember_token, :activation_token, :reset_token
@@ -104,6 +104,11 @@ class User < ApplicationRecord
   end
 
   private
+
+  def delete_notification(unfollowed_user)
+    @notification = Notification.find_by(user_id: id, target_id: unfollowed_user.id)
+    @notification.destroy
+  end
 
   def downcase_email
     self.email = email.downcase

@@ -24,6 +24,10 @@ body
                 li.divider
                 li
                   = link_to "Log out", logout_path, method: :delete
+            li.dropdown.notifications
+              = link_to 'Notifications', toggle_menu_action_path(current_user), method: :post, id: 'notifications-menu', class: 'dropdown-toggle', :data => { :toggle => 'dropdown' }, remote: true
+              ul.dropdown-menu.notifications-menu
+                li#dropdown-notifications
           - else
             li= link_to "Log in", login_path
             li

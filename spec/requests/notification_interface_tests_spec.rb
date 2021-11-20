@@ -23,5 +23,11 @@ RSpec.describe 'NotificationInterfaceTests', type: :request do
       @user_1.notifications.first.destroy
       expect(@user_1.notifications.count).to eq(0)
     end
+
+    it 'should delete notification on unfollow' do
+      expect(@user_1.notifications.count).to eq(1)
+      @user_1.unfollow(@user_2)
+      expect(@user_1.notifications.count).to eq(0)
+    end
   end
 end
