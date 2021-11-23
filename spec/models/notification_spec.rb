@@ -4,7 +4,7 @@ RSpec.describe Notification, type: :model do
   subject do
     user = create(:user)
     other_user = create(:user)
-    described_class.new(text: 'Michael has followed TestUser2', user: user, target_id: other_user.id)
+    described_class.new(text: 'Michael has followed TestUser2', user: other_user, target_id: user)
   end
 
   describe 'Validations' do

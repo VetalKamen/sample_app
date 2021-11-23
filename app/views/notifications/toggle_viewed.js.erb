@@ -1,4 +1,4 @@
-<% @last_unread_notification = @user.notifications.where("viewed='false'").order(updated_at: :desc).last %>
+<% @last_unread_notification = @user.notifications.where(viewed:false).order(updated_at: :desc).last %>
 
 <% if @last_unread_notification.nil? %>
 $('#notification-' + <%= j(@notification.id) %>).replaceWith('<%= j(render 'notifications/viewed_notification') %>')

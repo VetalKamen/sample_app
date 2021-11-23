@@ -10,11 +10,11 @@ Rails.application.routes.draw do
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
-  put '/notifications/:id', to: 'notifications#toggle_action', as: 'toggle_action'
-  post '/notifications_for_user/:id', to: 'notifications#toggle_menu_action', as: 'toggle_menu_action'
+  put '/notifications/:id', to: 'notifications#toggle_viewed', as: 'toggle_viewed'
+  post '/notifications_for_user/:id', to: 'notifications#index', as: 'index'
   resources :users do
     member do
-      get :following, :followers, :notifications
+      get :following, :followers
       resources :notifications, only: :destroy
     end
   end

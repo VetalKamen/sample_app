@@ -1,16 +1,18 @@
+<% @notifications = current_user.notifications.order(:viewed).order(updated_at: :desc) %>
+<% @notifications_paginated = @notifications.paginate(page: params[:page], per_page: @notifications.count) %>
 
 $('#dropdown-notifications').replaceWith("<%= j(render 'notifications/show_notifications_menu') %>");
 
-$(function() {
+$(function () {
     $('.dropdown.notifications').on({
-        "click": function(event) {
+        "click": function (event) {
             if ($(event.target).closest('.dropdown-toggle').length) {
                 $(this).data('closable', true);
             } else {
                 $(this).data('closable', false);
             }
         },
-        "hide.bs.dropdown": function(event) {
+        "hide.bs.dropdown": function (event) {
             hide = $(this).data('closable');
             $(this).data('closable', true);
             return hide;

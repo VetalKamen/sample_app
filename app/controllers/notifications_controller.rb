@@ -1,6 +1,6 @@
 class NotificationsController < ApplicationController
-  before_action :logged_in_user, only: [:destroy, :toggle_action, :toggle_menu_action]
-  before_action :correct_user, only: [:destroy, :toggle_action]
+  before_action :logged_in_user, only: [:destroy, :toggle_viewed, :index]
+  before_action :correct_user, only: [:destroy, :toggle_viewed]
 
   def destroy
     @notification.destroy
@@ -8,7 +8,7 @@ class NotificationsController < ApplicationController
     redirect_to request.referrer || root_url
   end
 
-  def toggle_action
+  def toggle_viewed
     @user = @notification.user
     if @notification.update_attribute('viewed', '1')
       respond_to do |format|
@@ -22,14 +22,11 @@ class NotificationsController < ApplicationController
     end
   end
 
-  def toggle_menu_action
-    @notifications = current_user.notifications.order(viewed: :desc, updated_at: :desc)
-    @notifications_paginated = @notifications.paginate(:page => params[:page], :per_page => @notifications.count)
+  def index
     respond_to do |format|
-      format.js {
-       render 'toggle_menu_action', locals:
-         { notifications: @notifications, notifications_paginated: @notifications_paginated, title: 'Notifications' }
-      }
+      format.js do
+        render 'index', locals: { title: 'Notifications' }
+      end
       format.html
     end
   end

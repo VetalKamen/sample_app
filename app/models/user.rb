@@ -1,11 +1,11 @@
 class User < ApplicationRecord
   has_many :microposts, dependent: :destroy
   has_many :active_relationships, class_name: 'Relationship',
-                                  foreign_key: 'follower_id',
-                                  dependent: :destroy
+           foreign_key: 'follower_id',
+           dependent: :destroy
   has_many :passive_relationships, class_name: 'Relationship',
-                                   foreign_key: 'followed_id',
-                                   dependent: :destroy
+           foreign_key: 'followed_id',
+           dependent: :destroy
   has_many :following, through: :active_relationships, source: :followed, after_remove: :delete_notification
   has_many :followers, through: :passive_relationships, source: :follower
   has_many :notifications, dependent: :destroy
@@ -17,8 +17,8 @@ class User < ApplicationRecord
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
   validates :name, presence: true, length: { maximum: 50 }
   validates :email, presence: true, length: { maximum: 255 },
-                    format: { with: VALID_EMAIL_REGEX },
-                    uniqueness: true
+            format: { with: VALID_EMAIL_REGEX },
+            uniqueness: true
   validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
 
   # Returns the hash digest of the given string.
@@ -85,7 +85,7 @@ class User < ApplicationRecord
 
   def feed
     part_of_feed = 'relationships.follower_id = :id or microposts.user_id = :id'
-    Micropost.joins(user: :followers).where(part_of_feed, { id: id })
+    Micropost.joins(user: :followers).where(part_of_feed, { id: id }).order(:created_at).distinct
   end
 
   # Follows a user.
@@ -106,7 +106,7 @@ class User < ApplicationRecord
   private
 
   def delete_notification(unfollowed_user)
-    @notification = Notification.find_by(user_id: id, target_id: unfollowed_user.id)
+    @notification = Notification.find_by(user_id: unfollowed_user.id, target_id: id)
     @notification.destroy
   end
 
