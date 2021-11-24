@@ -415,3 +415,15 @@ canvas#confetti {
   }
 }
 
+.unread-notifications {
+  margin-left: 90px;
+  margin-top: -45px;
+
+  .fas.fa-circle:before {
+    font-family: "FontAwesome", serif;
+    font-size: 6px;
+    color: red;
+    content: "\f111";
+  }
+}
+

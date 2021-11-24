@@ -1,5 +1,7 @@
-.row.navbar-notifications
+.row.navbar-notifications#notifications-with-unread
   - if @notifications.any?
+    - unless @viewed_all
+      = link_to 'Read_all', read_all_path(current_user), method: :post, remote: true
     ol.notifications
       = render @notifications
     = will_paginate @notifications_paginated

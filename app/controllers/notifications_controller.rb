@@ -10,7 +10,7 @@ class NotificationsController < ApplicationController
 
   def toggle_viewed
     @user = @notification.user
-    if @notification.update_attribute('viewed', '1')
+    if @notification.update(viewed: '1')
       respond_to do |format|
         format.js
         format.html { redirect_to request.referrer }
@@ -28,6 +28,18 @@ class NotificationsController < ApplicationController
         render 'index', locals: { title: 'Notifications' }
       end
       format.html
+    end
+  end
+
+  def read_all
+    @notifications = current_user.notifications
+    if @notifications.update_all(viewed: '1')
+      respond_to do |format|
+        format.js do
+          render 'read_all'
+        end
+        format.html
+      end
     end
   end
 
