@@ -13,15 +13,22 @@ RSpec.describe 'NotificationInterfaceTests', type: :request do
 
   describe 'create notification' do
     it 'should create notification on follow' do
-      expect(@user_1.notifications.count).to eq(1)
+      expect(@user_2.notifications.count).to eq(1)
     end
   end
 
   describe 'delete notification' do
     it 'user could delete his notification' do
-      expect(@user_1.notifications.count).to eq(1)
-      @user_1.notifications.first.destroy
-      expect(@user_1.notifications.count).to eq(0)
+      log_in_as @user_2
+      expect(@user_2.notifications.count).to eq(1)
+      @user_2.notifications.first.destroy
+      expect(@user_2.notifications.count).to eq(0)
+    end
+
+    it 'should delete notification on unfollow' do
+      expect(@user_2.notifications.count).to eq(1)
+      @user_1.unfollow(@user_2)
+      expect(@user_2.notifications.count).to eq(0)
     end
   end
 end

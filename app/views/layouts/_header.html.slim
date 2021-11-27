@@ -24,7 +24,32 @@ body
                 li.divider
                 li
                   = link_to "Log out", logout_path, method: :delete
+            li.dropdown.notifications
+              = link_to 'Notifications', index_path(current_user), method: :post, id: 'notifications-menu', class: 'dropdown-toggle', :data => { :toggle => 'dropdown' }, remote: true
+              ul.dropdown-menu.notifications-menu
+                li#dropdown-notifications
+              - if current_user.notifications.unread.any?
+                div.unread-notifications
+                  i.fas.fa-circle
           - else
             li= link_to "Log in", login_path
             li
               button#canvas-confetti Party!
+
+javascript:
+    $(function () {
+        $('.dropdown.notifications').on({
+            "click": function (event) {
+                if ($(event.target).closest('.dropdown-toggle').length) {
+                    $(this).data('closable', true);
+                } else {
+                    $(this).data('closable', false);
+                }
+            },
+            "hide.bs.dropdown": function (event) {
+                hide = $(this).data('closable');
+                $(this).data('closable', true);
+                return hide;
+            }
+        });
+    });

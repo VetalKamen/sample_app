@@ -22,6 +22,7 @@ gem 'rails_admin', '~> 2.0'
 gem 'rubocop', '~> 1.22', require: false
 gem 'rails-observers'
 gem 'ckeditor'
+gem "font-awesome-rails"
 
 group :development, :test do
   gem 'sqlite3', '1.4.2'

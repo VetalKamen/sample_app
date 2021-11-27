@@ -61,13 +61,6 @@ class UsersController < ApplicationController
     render 'show_follow'
   end
 
-  def notifications
-    @title = "Notifications"
-    @user = User.find(params[:id])
-    @notifications = @user.notifications.paginate(page: params[:page])
-    render 'show_notifications'
-  end
-
   private
 
   def user_params

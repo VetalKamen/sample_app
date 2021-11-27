@@ -1,0 +1,6 @@
+<% @notifications = current_user.notifications.order(:viewed).order(updated_at: :desc) %>
+<% @notifications_paginated = @notifications.paginate(page: params[:page], per_page: @notifications.count) %>
+<% @viewed_all = !@notifications.unread.any? %>
+
+$('#notifications-with-unread').replaceWith("<%= j(render 'notifications/show_notifications_menu') %>");
+$('.unread-notifications').replaceWith()
