@@ -438,3 +438,6 @@ DEPENDENCIES
   webdrivers (= 4.6.0)
   webpacker (= 5.4.0)
   will_paginate (= 3.3.0)
+
+BUNDLED WITH
+   2.1.4
