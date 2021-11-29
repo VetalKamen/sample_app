@@ -23,6 +23,7 @@ gem 'rubocop', '~> 1.22', require: false
 gem 'rails-observers'
 gem 'ckeditor'
 gem "font-awesome-rails"
+gem 'rswag', '~> 2.4'
 
 group :development, :test do
   gem 'sqlite3', '1.4.2'

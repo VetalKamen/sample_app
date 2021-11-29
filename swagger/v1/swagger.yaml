@@ -1,0 +1,19 @@
+---
+openapi: 3.0.1
+info:
+  title: API V1
+  version: v1
+paths:
+  "/api/microposts":
+    post:
+      summary: get all microposts data in json
+      tags:
+      - Microposts
+      responses:
+        '200':
+          description: successful
+servers:
+- url: https://{defaultHost}
+  variables:
+    defaultHost:
+      default: www.example.com
