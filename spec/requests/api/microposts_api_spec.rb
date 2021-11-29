@@ -12,7 +12,7 @@ RSpec.describe 'api/microposts_api', type: :request do
       produces 'application/json'
       response(200, 'successful') do
         run_test! do |response|
-          data = JSON.parse(response.body)
+          data = JSON.parse(response.body, object_class: Micropost)
           expect(data).to eq(@microposts)
         end
       end
