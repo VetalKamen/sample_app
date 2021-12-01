@@ -23,3 +23,9 @@ module SampleApp
     config.action_view.embed_authenticity_token_in_remote_forms = true
   end
 end
+
+begin
+  require 'rspec/core/rake_task'
+  RSpec::Core::RakeTask.new(:spec)
+rescue LoadError
+end
