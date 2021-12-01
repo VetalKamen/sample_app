@@ -4,14 +4,49 @@ info:
   title: API V1
   version: v1
 paths:
-  "/api/microposts":
-    post:
+  "/microposts":
+    get:
       summary: get all microposts data in json
       tags:
       - Microposts
       responses:
         '200':
-          description: successful
+          description: microposts found
+  "/microposts/{id}":
+    get:
+      summary: Retrieves a micropost
+      tags:
+      - Microposts
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: micropost found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  content:
+                    type: string
+                  user_id:
+                    type: integer
+            application/xml:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  content:
+                    type: string
+                  user_id:
+                    type: integer
 servers:
 - url: https://{defaultHost}
   variables:
