@@ -38,7 +38,7 @@ RSpec.describe 'Microposts API', type: :request do
 
       response '404', 'micropost not found' do
         let(:id) { 'invalid' }
-        # run_test!
+        run_test!
       end
     end
   end

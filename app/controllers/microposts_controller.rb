@@ -1,7 +1,7 @@
 class MicropostsController < ApplicationController
   before_action :logged_in_user, only: [:create, :destroy]
   before_action :correct_user, only: :destroy
-
+  rescue_from ::ActiveRecord::RecordNotFound, with: :record_not_found
   def create
     @micropost = current_user.microposts.build(micropost_params)
     @micropost.image.attach(params[:micropost][:image])
@@ -26,6 +26,12 @@ class MicropostsController < ApplicationController
 
   def show
     @micropost = Micropost.find(params[:id])
+  end
+
+  protected
+
+  def record_not_found(exception)
+    render json: { error: exception.message }.to_json, status: 404
   end
 
   private
