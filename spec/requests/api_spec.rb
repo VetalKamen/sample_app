@@ -6,7 +6,7 @@ RSpec.describe 'Microposts API', type: :request do
     @microposts = Micropost.all
   end
 
-  path '/microposts' do
+  path '/api' do
     get('get all microposts data in json') do
       tags 'Microposts'
       produces 'application/json'
@@ -19,7 +19,7 @@ RSpec.describe 'Microposts API', type: :request do
     end
   end
 
-  path '/microposts/{id}' do
+  path '/api/{id}' do
     get 'Retrieves a micropost' do
       tags 'Microposts'
       produces 'application/json', 'application/xml'
