@@ -1,4 +1,5 @@
-class MicropostsController < ApplicationController
+require 'api/api_controller'
+class MicropostsController < ApiController
   before_action :logged_in_user, only: [:create, :destroy]
   before_action :correct_user, only: :destroy
 
@@ -12,6 +13,14 @@ class MicropostsController < ApplicationController
       @feed_items = current_user.feed.paginate(page: params[:page])
       render 'static_pages/home'
     end
+  end
+
+  def index
+    @microposts = Micropost.all
+  end
+
+  def show
+    @micropost = Micropost.find(params[:id])
   end
 
   def destroy
