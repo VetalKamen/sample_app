@@ -38,7 +38,7 @@ class MicropostsInterfaceTest < ActionDispatch::IntegrationTest
     end
     # Visit different user (no delete links)
     get user_path(users(:archer))
-    assert_select 'a', text: 'delete', count: 0
+    assert_select 'a', text: 'Delete', count: 0
   end
 
 end
