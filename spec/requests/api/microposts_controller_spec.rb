@@ -1,12 +1,12 @@
 require 'swagger_helper'
-
+require 'pry'
 RSpec.describe 'Microposts API', type: :request do
 
   setup do
     @microposts = Micropost.all
   end
 
-  path '/microposts' do
+  path '/api/microposts' do
     get('get all microposts data in json') do
       tags 'Microposts'
       produces 'application/json'
@@ -19,7 +19,7 @@ RSpec.describe 'Microposts API', type: :request do
     end
   end
 
-  path '/microposts/{id}' do
+  path '/api/microposts/{id}' do
     get 'Retrieves a micropost' do
       tags 'Microposts'
       produces 'application/json', 'application/xml'
@@ -31,7 +31,6 @@ RSpec.describe 'Microposts API', type: :request do
                  content: { type: :string },
                  user_id: { type: :integer }
                }
-
         let(:id) { Micropost.create(content: 'content for testing', user_id: create(:user).id).id }
         run_test!
       end

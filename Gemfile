@@ -24,6 +24,7 @@ gem 'rails-observers'
 gem 'ckeditor'
 gem "font-awesome-rails"
 gem 'rswag', '~> 2.4'
+gem 'rails-i18n'
 
 group :development, :test do
   gem 'sqlite3', '1.4.2'
@@ -51,6 +52,7 @@ group :test do
   gem 'minitest-reporters',       '1.3.8'
   gem 'guard',                    '2.16.2'
   gem 'guard-minitest',           '2.4.6'
+  gem 'pry'
 end
 
 group :production do
