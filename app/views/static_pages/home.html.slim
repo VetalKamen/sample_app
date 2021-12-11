@@ -12,11 +12,11 @@
       = render 'shared/feed'
 - else
   .center.jumbotron
-    h1 Welcome to the Sample App
+    h1 = t('.welcome')
     h2
-      | This is the home page for the
+      = t('.greeting')
       a href="https://www.railstutorial.org/"  Ruby on Rails Tutorial
       |  sample application.
-    = link_to "Sign up now!", signup_path, class: "btn btn-lg btn-primary"
+    = link_to t('.signup'), signup_path, class: "btn btn-lg btn-primary"
   = link_to image_tag("rails.svg", alt: "Rails logo", width: "200"), \
     "https://rubyonrails.org/"

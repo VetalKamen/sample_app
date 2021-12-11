@@ -1,0 +1,50 @@
+ua:
+  datetime:
+    distance_in_words:
+      x_days: "%{count} днів тому."
+  activerecord:
+    errors:
+      models:
+        micropost:
+          attributes:
+            content:
+              blank: "порожній"
+              invalid: "неправильно заповнений"
+  global:
+    header:
+      en: "Англ"
+      ua: "Укр"
+      home: "Дім"
+      help: "Допомога"
+      login: "Увійти"
+      logout: "Вийти"
+      settings: "Налаштування"
+      profile: "Профіль"
+      users: "Користувачі"
+      notifications: "Сповіщення"
+      party: "Свято!"
+      account: "Аккаунт"
+    footer:
+      about: "Про нас"
+      contact: "Контакти"
+      news: "Новини"
+    forms:
+      submit: "Підтвердити"
+      publish: "Опублікувати"
+      delete: "Видалити"
+      messages:
+        errors:
+          one: "Не вдалося зберегти! Знайдена одна помилка:"
+          few: "Не вдалося зберегти! Знайдено %{count} помилки:"
+          many: "Не вдалося зберегти! Знайдено %{count} помилок:"
+          other: "Не вдалося зберегти! Знайдена %{count} помилка:"
+  static_pages:
+    home:
+      welcome: "Вітаємо в SampleApp!"
+      signup: "Зареєструватися!"
+      greeting: "Це домашня сторінка для "
+  users:
+    follow: "Підписатись"
+    unfollow: "Відписатись"
+  microposts:
+    posted_at: "Опубліковано %{time_in_days}"
