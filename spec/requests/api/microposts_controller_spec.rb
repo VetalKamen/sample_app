@@ -1,5 +1,4 @@
 require 'swagger_helper'
-require 'pry'
 RSpec.describe 'Microposts API', type: :request do
 
   setup do
