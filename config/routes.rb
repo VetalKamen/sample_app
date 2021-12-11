@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
 
+  # scope '(:locale)', locale: /#{I18n.available_locales.join("|")}/ do
+  mount Rswag::Ui::Engine => '/api-docs'
+  mount Rswag::Api::Engine => '/api-docs'
   mount Ckeditor::Engine => '/ckeditor'
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+
   root 'static_pages#home'
   get '/help', to: 'static_pages#help'
   get '/about', to: 'static_pages#about'
@@ -22,6 +26,10 @@ Rails.application.routes.draw do
   resources :account_activations, only: [:edit]
   resources :password_resets, only: [:new, :create, :edit, :update]
   resources :microposts, only: [:create, :destroy]
+  namespace :api do
+    resources :microposts, only: [:index, :show], defaults: { format: 'json' }
+  end
   resources :relationships, only: [:create, :destroy]
+  # end
 
 end

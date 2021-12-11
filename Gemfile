@@ -23,12 +23,17 @@ gem 'rubocop', '~> 1.22', require: false
 gem 'rails-observers'
 gem 'ckeditor'
 gem "font-awesome-rails"
+gem 'rswag', '~> 2.4'
+gem 'rails-i18n'
 
 group :development, :test do
   gem 'sqlite3', '1.4.2'
   gem 'byebug',  '11.1.3', platforms: [:mri, :mingw, :x64_mingw]
-  gem 'rspec-rails'
   gem 'factory_bot_rails'
+end
+
+group :development, :test, :production do
+  gem 'rspec-rails'
 end
 
 group :development do
@@ -47,6 +52,7 @@ group :test do
   gem 'minitest-reporters',       '1.3.8'
   gem 'guard',                    '2.16.2'
   gem 'guard-minitest',           '2.4.6'
+  gem 'pry'
 end
 
 group :production do

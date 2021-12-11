@@ -61,6 +61,7 @@ jobs:
           bin/rails db:setup
           bundle exec rails test
           bundle exec rspec spec
+          bundle exec rake rswag
           
       - name: Upload Code Coverage
         uses: actions/upload-artifact@v2
